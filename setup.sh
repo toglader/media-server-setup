@@ -39,9 +39,9 @@ start_containers() {
   mkdir -p "$BASE_DIR"/{plex/config,plex/transcode}
   mkdir -p "$BASE_DIR"/{sonarr/config,radarr/config,bazarr/config}
   mkdir -p "$BASE_DIR"/{media/{tv,movies},downloads}
-
   # Start the Docker containers
   docker-compose up -d
+  echo "Plex UI is available in /web"
 }
 
 # Function to stop containers
