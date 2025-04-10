@@ -3,9 +3,10 @@ Plex UI can be found from http://localhost:32400/web
 
 Usage:
 Edit media-server.env
+```
 # chmod +x setup.sh
 # sudo ./setup.sh start
-
+```
 Configure sabnzbd
 -----------------
 1. Open http://localhost:30084/
@@ -65,7 +66,7 @@ Configure bazarr
 
 Configure plex
 ---------------
-1. Open http://localhost:32400/
+1. Open http://localhost:32400/web/
 2. Login with existing credentials
 3. TODO...
 
