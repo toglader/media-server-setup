@@ -17,19 +17,19 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_DIR}/plex/config:/config
-      - ${BASE_DIR}/media/tv:/tv
-      - ${BASE_DIR}/media/movies:/movies
+      - ${BASE_DIR}/media/tv:/storage/tv
+      - ${BASE_DIR}/media/movies:/storage/movies
       - ${BASE_DIR}/plex/transcode:/transcode
     ports:
-      - "${PORT_PLEX}:32400"              # Plex Web UI
-      - "${PLEX_UDP_DLNA_PORT}:${PLEX_UDP_DLNA_PORT}/udp"       # Plex DLNA (UDP)
-      - "${PLEX_UDP_BONJOUR_PORT}:${PLEX_UDP_BONJOUR_PORT}/udp" # Plex Bonjour/Avahi (UDP)
-      - "${PLEX_TCP_ROKU_PORT}:${PLEX_TCP_ROKU_PORT}/tcp"       # Plex Roku Control (TCP)
-      - "${PLEX_UDP_GDM_PORT1}:${PLEX_UDP_GDM_PORT1}/udp"       # Plex GDM discovery (UDP)
-      - "${PLEX_UDP_GDM_PORT2}:${PLEX_UDP_GDM_PORT2}/udp"       # Plex GDM discovery (UDP)
-      - "${PLEX_UDP_GDM_PORT3}:${PLEX_UDP_GDM_PORT3}/udp"       # Plex GDM discovery (UDP)
-      - "${PLEX_UDP_GDM_PORT4}:${PLEX_UDP_GDM_PORT4}/udp"       # Plex GDM discovery (UDP)
-      - "${PLEX_TCP_DLNA_PORT}:${PLEX_TCP_DLNA_PORT}/tcp"       # Plex DLNA (TCP)
+      - "${PORT_PLEX}:32400"
+      - "${PLEX_UDP_DLNA_PORT}:${PLEX_UDP_DLNA_PORT}/udp"
+      - "${PLEX_UDP_BONJOUR_PORT}:${PLEX_UDP_BONJOUR_PORT}/udp"
+      - "${PLEX_TCP_ROKU_PORT}:${PLEX_TCP_ROKU_PORT}/tcp"
+      - "${PLEX_UDP_GDM_PORT1}:${PLEX_UDP_GDM_PORT1}/udp"
+      - "${PLEX_UDP_GDM_PORT2}:${PLEX_UDP_GDM_PORT2}/udp"
+      - "${PLEX_UDP_GDM_PORT3}:${PLEX_UDP_GDM_PORT3}/udp"
+      - "${PLEX_UDP_GDM_PORT4}:${PLEX_UDP_GDM_PORT4}/udp"
+      - "${PLEX_TCP_DLNA_PORT}:${PLEX_TCP_DLNA_PORT}/tcp"
     restart: unless-stopped
 
   sonarr:
@@ -37,8 +37,6 @@ services:
     container_name: sonarr
     networks:
       - media_net
-    depends_on:
-      - radarr
     ports:
       - "${PORT_SONARR}:8989"
     environment:
@@ -47,7 +45,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_DIR}/sonarr/config:/config
-      - ${BASE_DIR}/media/tv:/tv
+      - ${BASE_DIR}/media/tv:/storage/tv
       - ${BASE_DIR}/downloads:/downloads
     restart: unless-stopped
 
@@ -64,7 +62,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_DIR}/radarr/config:/config
-      - ${BASE_DIR}/media/movies:/movies
+      - ${BASE_DIR}/media/movies:/storage/movies
       - ${BASE_DIR}/downloads:/downloads
     restart: unless-stopped
 
@@ -73,9 +71,6 @@ services:
     container_name: bazarr
     networks:
       - media_net
-    depends_on:
-      - sonarr
-      - radarr
     ports:
       - "${PORT_BAZARR}:6767"
     environment:
@@ -84,7 +79,24 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_DIR}/bazarr/config:/config
-      - ${BASE_DIR}/media/tv:/tv
-      - ${BASE_DIR}/media/movies:/movies
+      - ${BASE_DIR}/media/tv:/storage/tv
+      - ${BASE_DIR}/media/movies:/storage/movies
+    restart: unless-stopped
+
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    networks:
+      - media_net
+    ports:
+      - "${PORT_SABNZBD}:8080"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${BASE_DIR}/sabnzbd/config:/config
+      - ${BASE_DIR}/downloads:/downloads
+      - ${BASE_DIR}/media:/storage
     restart: unless-stopped
 
