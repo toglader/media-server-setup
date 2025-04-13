@@ -100,3 +100,17 @@ services:
       - ${BASE_DIR}/media:/storage
     restart: unless-stopped
 
+  overseerr:
+    image: linuxserver/overseerr
+    container_name: overseerr
+    networks: 
+      - media_net
+    ports:
+      - "${PORT_OVERSEERR}:5055"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${BASE_DIR}/overseerr/config:/config
+    restart: unless-stopped
