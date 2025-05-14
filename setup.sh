@@ -39,11 +39,11 @@ case "$1" in
   start)
     check_ports
     echo "🚀 Starting media server containers..."
-    docker-compose up -d
+    docker compose up -d
     ;;
   stop)
     echo "🛑 Stopping media server containers..."
-    docker-compose down
+    docker compose down
     ;;
   *)
     echo "Usage: $0 {start|stop}"
