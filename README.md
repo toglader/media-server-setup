@@ -1,5 +1,5 @@
 Setup Plex, radarr, sonarr and bazarr automatically in containers.
-Plex UI can be found from http://localhost:32400/web
+Plex UI can be found from http://localhost:30080/web
 
 Usage:
 Edit media-server.env
@@ -7,6 +7,12 @@ Edit media-server.env
 # chmod +x setup.sh
 # sudo ./setup.sh start
 ```
+Change owner of $BASE_DIR for user installing
+
+...
+# sudo chown replace_with_user:replace_with_group -R /opt/media-server
+...
+
 Configure sabnzbd
 -----------------
 1. Open http://localhost:30084/
@@ -16,7 +22,7 @@ Configure sabnzbd
 5. Go to "Category" and click "save" on "tv" category
 
 
-Configure sonarr
+Configure sonarr ![Sonarr](https://avatars.githubusercontent.com/u/1082903?s=48&v=4)
 ----------------
 
 1. Open http://localhost:30081/
@@ -39,7 +45,7 @@ Configure sonarr
 
 6. Store API key from Settings->General
   
-Configure radarr
+Configure radarr ![Radarr](https://avatars.githubusercontent.com/u/25025331?s=48&v=4)
 ----------------
 
 1. Open http://localhost:30082/
@@ -61,7 +67,7 @@ Configure radarr
    * Choose from newznab presets your indexer and configure
 6. Store API key for later use from Settings->General
      
-Configure bazarr
+Configure bazarr ![Bazarr](https://avatars.githubusercontent.com/u/44780843?s=200&v=4)
 ----------------
 
 1. Open http://localhost:30083/
@@ -81,7 +87,7 @@ Configure bazarr
     * Settings -> Languages -> Choose languages
     * Save from top of the page
 
-Configure plex
+Configure plex ![Plex](https://avatars.githubusercontent.com/u/324832?s=200&v=4)
 ---------------
 1. Open http://localhost:30080/web/
 2. Login with existing Plex account or create new
@@ -93,13 +99,13 @@ Configure plex
 8. Click next and done
 
 
-Configure overseerr
+Configure overseerr ![overseerr](https://overseerr.dev/_next/image?url=%2Fos_logo_filled.svg&w=96&q=75)
 -------------------
 1. Open http://localhost:30085/
 2. Login with existing Plex account 
 3. Add plex server with address "plex" and port 32400, save changes
 4. Enable "Movies" and "TV Shows" libraries
-5. Clock start scan and click Continue
+5. Click start scan and click Continue
 6. Add radarr server
     * Select default server
     * Set any server name
@@ -126,4 +132,4 @@ Configure overseerr
 
 Enjoy
 -----
-Overseerr is available in http://localhost:30085/ and Plex in http://localhost:32400/web/
+Overseerr is available in http://localhost:30085/ and Plex in http://localhost:30080/web/
