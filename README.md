@@ -9,11 +9,12 @@ Edit media-server.env
 ```
 Change owner of $BASE_DIR for user installing
 
-...
+```
 # sudo chown replace_with_user:replace_with_group -R /opt/media-server
-...
+```
 
-Configure sabnzbd
+
+![Sabnzbd](https://avatars.githubusercontent.com/u/960698?s=48&v=4)Configure sabnzbd 
 -----------------
 1. Open http://localhost:30084/
 2. Add your news provider
@@ -22,7 +23,7 @@ Configure sabnzbd
 5. Go to "Category" and click "save" on "tv" category
 
 
-Configure sonarr ![Sonarr](https://avatars.githubusercontent.com/u/1082903?s=48&v=4)
+![Sonarr](https://avatars.githubusercontent.com/u/1082903?s=48&v=4)Configure sonarr 
 ----------------
 
 1. Open http://localhost:30081/
@@ -45,7 +46,7 @@ Configure sonarr ![Sonarr](https://avatars.githubusercontent.com/u/1082903?s=48&
 
 6. Store API key from Settings->General
   
-Configure radarr ![Radarr](https://avatars.githubusercontent.com/u/25025331?s=48&v=4)
+![Radarr](https://avatars.githubusercontent.com/u/25025331?s=48&v=4)Configure radarr 
 ----------------
 
 1. Open http://localhost:30082/
@@ -67,7 +68,7 @@ Configure radarr ![Radarr](https://avatars.githubusercontent.com/u/25025331?s=48
    * Choose from newznab presets your indexer and configure
 6. Store API key for later use from Settings->General
      
-Configure bazarr ![Bazarr](https://avatars.githubusercontent.com/u/44780843?s=200&v=4)
+![Bazarr](https://avatars.githubusercontent.com/u/44780843?s=200&v=4)Configure bazarr 
 ----------------
 
 1. Open http://localhost:30083/
@@ -87,7 +88,7 @@ Configure bazarr ![Bazarr](https://avatars.githubusercontent.com/u/44780843?s=20
     * Settings -> Languages -> Choose languages
     * Save from top of the page
 
-Configure plex ![Plex](https://avatars.githubusercontent.com/u/324832?s=200&v=4)
+![Plex](https://avatars.githubusercontent.com/u/324832?s=200&v=4)Configure plex 
 ---------------
 1. Open http://localhost:30080/web/
 2. Login with existing Plex account or create new
@@ -99,7 +100,7 @@ Configure plex ![Plex](https://avatars.githubusercontent.com/u/324832?s=200&v=4)
 8. Click next and done
 
 
-Configure overseerr ![overseerr](https://overseerr.dev/_next/image?url=%2Fos_logo_filled.svg&w=96&q=75)
+![overseerr](https://overseerr.dev/_next/image?url=%2Fos_logo_filled.svg&w=96&q=75)Configure overseerr 
 -------------------
 1. Open http://localhost:30085/
 2. Login with existing Plex account 
