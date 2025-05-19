@@ -44,7 +44,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_DIR}/sonarr/config:/config
-      - ${BASE_DIR}/media/tv:/storage/tv
+      - ${BASE_DIR}/media:/storage
       - ${BASE_DIR}/downloads:/downloads
     restart: unless-stopped
 
@@ -61,7 +61,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${BASE_DIR}/radarr/config:/config
-      - ${BASE_DIR}/media/movies:/storage/movies
+      - ${BASE_DIR}/media:/storage
       - ${BASE_DIR}/downloads:/downloads
     restart: unless-stopped
 
