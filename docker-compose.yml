@@ -14,6 +14,8 @@ services:
       - PGID=${PGID}
       - VERSION=docker
       - TZ=${TZ}
+    devices:
+      - "/dev/dri:/dev/dri"
     volumes:
       - ${BASE_DIR}/plex/config:/config
       - ${BASE_DIR}/media/tv:/storage/tv
