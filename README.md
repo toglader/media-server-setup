@@ -138,7 +138,7 @@ Stop and start containers
 17. Click "Finish setup"
 
 
-![Watchtower](https://containrrr.dev/watchtower/assets/logo-450px.png)Watchtower - Automatic Updates
+![Watchtower](https://github.com/containrrr/watchtower/blob/main/logo.png?raw=true)Watchtower - Automatic Updates
 ----------------------------------
 Watchtower is included to automatically monitor and update Docker containers when new images are available.
 
@@ -160,6 +160,39 @@ Watchtower is included to automatically monitor and update Docker containers whe
 **Note**: Watchtower itself is excluded from updates to prevent self-update issues.
 
 
+![Shoutrrr](https://github.com/containrrr/shoutrrr/raw/main/docs/shoutrrr-logotype-horizontal.png)Shoutrrr - Notification Service
+-----------------------------
+Shoutrrr provides a unified notification service that can send messages to various platforms and services. It's integrated with Watchtower and can be used by other services for centralized notifications.
+
+**Available at**: http://localhost:30086/
+
+**Configuration:**
+1. The service creates a default config file at `/opt/media-server/shoutrrr/config/config.yaml`
+2. Edit the config file to add your notification services
+
+**Supported Services:**
+- **Discord**: `discord://token@channel_id`
+- **Slack**: `slack://webhook_url`
+- **Telegram**: `telegram://token@chat_id`
+- **Email (SMTP)**: `smtp://username:password@host:port/?from=sender@example.com&to=recipient@example.com`
+- **Gotify**: `gotify://gotify.example.com/token`
+- **Matrix**: `matrix://username:password@homeserver/?rooms=room_id`
+- **Teams**: `teams://webhook_url`
+- **Pushover**: `pushover://shoutrrr:token@user_key`
+- **And many more...**
+
+**Example config.yaml:**
+```yaml
+urls:
+  - discord://your_token@your_channel_id
+  - smtp://user:pass@smtp.gmail.com:587/?from=sender@gmail.com&to=recipient@gmail.com
+```
+
+**Usage with other services:**
+- Watchtower automatically uses Shoutrrr when `WATCHTOWER_NOTIFICATIONS=shoutrrr`
+- Other services can send HTTP POST requests to `http://shoutrrr:8080/send` with message content
+
+
 Enjoy
 -----
-Overseerr is available in http://localhost:30085/ and Plex in http://localhost:30080/web/
+Overseerr is available in http://localhost:30085/, Plex in http://localhost:30080/web/

@@ -135,3 +135,43 @@ services:
     restart: unless-stopped
     labels:
       - com.centurylinklabs.watchtower.enable=false
+
+  shoutrrr:
+    image: containrrr/shoutrrr:latest
+    container_name: shoutrrr
+    networks:
+      - media_net
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${BASE_DIR}/shoutrrr/config:/config
+    restart: unless-stopped
+    command: >
+      sh -c "
+      if [ ! -f /config/config.yaml ]; then
+        mkdir -p /config &&
+        cat > /config/config.yaml << 'EOF'
+      # Shoutrrr configuration
+      # Add your notification services here
+      # Example configurations:
+      
+      # Discord:
+      # urls:
+      #   - discord://token@channel_id
+      
+      # Slack:
+      #   - slack://webhook_url
+      
+      # Email (SMTP):
+      #   - smtp://username:password@host:port/?from=sender@example.com&to=recipient@example.com
+      
+      # Telegram:
+      #   - telegram://token@chat_id
+      
+      # Gotify:
+      #   - gotify://gotify.example.com/token
+      
+      urls: []
+      EOF
+      fi &&
+      /shoutrrr"
