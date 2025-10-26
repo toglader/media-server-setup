@@ -12,15 +12,22 @@ Change owner of $BASE_DIR for user installing
 ```
 # sudo chown replace_with_user:replace_with_group -R /opt/media-server
 ```
+Stop and start containers
+```
+# sudo ./setup.sh stop; sudo ./setup.sh start
+```
 
 
 ![Sabnzbd](https://avatars.githubusercontent.com/u/960698?s=48&v=4)Configure sabnzbd 
 -----------------
-1. Open http://localhost:30084/
+1. Open http://localhost:30084/  
 2. Add your news provider
 3. Copy API key from "General" tab
 4. Configure username and password
 5. Go to "Category" and click "save" on "tv" category
+6. Change "Folders->Temporary Download Folder" to "/incomplete"
+7. Change "Folders->Completed Download Folder" to "/downloads"
+8. Add "sabnzbd" (with comma separated) to Special->host_whitelist
 
 
 ![Sonarr](https://avatars.githubusercontent.com/u/1082903?s=48&v=4)Configure sonarr 
@@ -129,6 +136,28 @@ Change owner of $BASE_DIR for user installing
 15. Select language profile as "Deprecated"
 16. Click "Add Server"
 17. Click "Finish setup"
+
+
+![Watchtower](https://containrrr.dev/watchtower/assets/logo-450px.png)Watchtower - Automatic Updates
+----------------------------------
+Watchtower is included to automatically monitor and update Docker containers when new images are available.
+
+**Configuration:**
+- **Schedule**: Updates run daily at 4:30 AM (configurable via `WATCHTOWER_SCHEDULE`)
+- **Cleanup**: Automatically removes old images after updates
+- **Notifications**: Optional notifications can be configured
+
+**To configure notifications:**
+1. Edit `media-server.env`
+2. Set `WATCHTOWER_NOTIFICATIONS=shoutrrr` 
+3. Set `WATCHTOWER_NOTIFICATION_URL` to your notification service URL
+
+**Supported notification services:**
+- Discord: `discord://token@id`
+- Email: `smtp://username:password@host:port/?from=fromAddress&to=toAddress`
+- Slack: `slack://[botname@]webhookurl`
+
+**Note**: Watchtower itself is excluded from updates to prevent self-update issues.
 
 
 Enjoy
