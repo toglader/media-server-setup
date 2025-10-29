@@ -107,10 +107,12 @@ Stop and start containers
 8. Click next and done
 
 
-![overseerr](https://overseerr.dev/_next/image?url=%2Fos_logo_filled.svg&w=96&q=75)Configure overseerr 
--------------------
-1. Open http://localhost:30085/
-2. Login with existing Plex account 
+![jellyseerr](https://github.com/Fallenbagel/jellyseerr/raw/develop/public/logo_stacked.svg)Configure jellyseerr 
+--------------------
+Jellyseerr is a fork of Overseerr with additional features and improved performance. You can use either Overseerr or Jellyseerr (or both for different purposes).
+
+1. Open http://localhost:30087/
+2. Login with existing Plex account (or create a local account)
 3. Add plex server with address "plex" and port 32400, save changes
 4. Enable "Movies" and "TV Shows" libraries
 5. Click start scan and click Continue
@@ -136,6 +138,13 @@ Stop and start containers
 15. Select language profile as "Deprecated"
 16. Click "Add Server"
 17. Click "Finish setup"
+
+**Jellyseerr Additional Features:**
+- Enhanced mobile interface
+- Better performance and stability
+- Additional notification options
+- Improved user management
+- More customization options
 
 
 ![Watchtower](https://github.com/containrrr/watchtower/blob/main/logo.png?raw=true)Watchtower - Automatic Updates
@@ -195,4 +204,9 @@ urls:
 
 Enjoy
 -----
-Overseerr is available in http://localhost:30085/, Plex in http://localhost:30080/web/
+- **Plex**: http://localhost:30080/web/
+- **Jellyseerr**: http://localhost:30087/
+- **Sonarr**: http://localhost:30081/
+- **Radarr**: http://localhost:30082/
+- **Bazarr**: http://localhost:30083/
+- **SABnzbd**: http://localhost:30084/

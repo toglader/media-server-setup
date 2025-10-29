@@ -21,6 +21,7 @@ services:
       - ${BASE_DIR}/media/tv:/storage/tv
       - ${BASE_DIR}/media/movies:/storage/movies
       - ${BASE_DIR}/plex/transcode:/transcode
+      - /usr/share/libdrm:/home/runner/_work/plex-conan/plex-conan/.conan/data/libdrm/2.4.120-4/plex/main/build/ba4ee9fcf280d38ea7457f18301aac09908b7976/meson-install/share/libdrm
     ports:
       - "${PORT_PLEX}:32400"
       - "${PLEX_UDP_DLNA_PORT}:${PLEX_UDP_DLNA_PORT}/udp"
@@ -102,19 +103,20 @@ services:
       - ${BASE_DIR}/media:/storage
     restart: unless-stopped
 
-  overseerr:
-    image: linuxserver/overseerr
-    container_name: overseerr
-    networks: 
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    networks:
       - media_net
     ports:
-      - "${PORT_OVERSEERR}:5055"
+      - "${PORT_JELLYSEERR}:5055"
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
+      - LOG_LEVEL=debug
     volumes:
-      - ${BASE_DIR}/overseerr/config:/config
+      - ${BASE_DIR}/jellyseerr/config:/app/config
     restart: unless-stopped
 
   watchtower:
